@@ -1,28 +1,31 @@
 'use strict'
 
-function capturarNumeros(){
-    const precoOriginal = document.getElementById('precoOriginal')
-    const desconto = document.getElementById('desconto')
+const calcularValorEconomizado = (preco, desconto) => preco * desconto / 100
 
-    calculoSaida(precoOriginal, desconto)
+const calcularPrecoFinal = (preco, valorEconomizado) => preco - valorEconomizado
 
-    return precoOriginal, desconto
+function selecionarCor(desconto){
+
+    if(desconto <= 5){
+        return 'desconto1'
+    }else if (desconto <= 10){
+        return 'desconto2'
+    }else {
+        return 'desconto3'
+    }
+
 }
 
-function calculoSaida(precoOriginal, desconto){
+function handleClick(){
+    const preco = Number(document.getElementById('preco').value)
+    const desconto = Number(document.getElementById('desconto').value)
+    const resultado = document.getElementById('resultado')
 
-    const calcularFinal = ((100-desconto.value)/100)*precoOriginal.value
+    const valorEconomizado = calcularValorEconomizado(preco, desconto)
+    const precoFinal = calcularPrecoFinal(preco, valorEconomizado)
+    const cor = selecionarCor(desconto)
 
-    economiaDesconto(precoOriginal, desconto)
-
-    return calcularFinal
-}
-
-function economiaDesconto(precoOriginal, desconto){
-
-    const economiaFinal = ((desconto.value / 100) * precoOriginal)
-
-    resultadoFinal(precoOriginal, desconto)
-
-    return economiaFinal
+    resultado.textContent = `${valorEconomizado.toFixed(2)} - ${precoFinal.toFixed(2)}`
+    resultado.classList.remove('desconto1', 'desconto2', 'desconto3')
+    resultado.classList.add(cor)
 }

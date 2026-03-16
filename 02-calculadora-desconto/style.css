@@ -109,6 +109,21 @@ button:hover {
   justify-content: center;
 }
 
+.resultado.desconto1 {
+  border: 2px solid green;
+  box-shadow: 0 0 16px green;
+}
+
+.resultado.desconto2 {
+  border: 2px solid orange;
+  box-shadow: 0 0 16px orange;
+}
+
+.resultado.desconto3 {
+  border: 2px solid red;
+  box-shadow: 0 0 16px red;
+}
+
 footer {
   display: flex;
   align-items: flex-end;
